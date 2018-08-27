@@ -4,8 +4,12 @@
   "description": "the react-redux form of maintenance-tracker written in html/js/css",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node tools/srcServer.js",
-    "test": "mocha"
+    "start": "webpack-dev-server --open --mode development",
+    "test:mocha": "mocha './src/**/*.test.js' --compilers js:babel-core/register",
+    "test": "jest --coverage",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -25,25 +29,44 @@
   "homepage": "https://github.com/Lumexralph/Maintenance-Tracker-React-App#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.2",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-react-hmre": "^1.1.1",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "css-loader": "^1.0.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "eventsource-polyfill": "^0.9.6",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.5.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.9.3",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.4.2",
+    "redux": "^4.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
     "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
-    "express": "^4.16.3",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.1",
-    "open": "0.0.5",
-    "webpack-dev-middleware": "^3.1.3",
-    "webpack-hot-middleware": "^2.22.3"
+    "file-loader": "^2.0.0",
+    "font-awesome": "^4.7.0",
+    "image-webpack-loader": "^4.3.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   }
 }
