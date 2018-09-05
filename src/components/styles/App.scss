@@ -229,7 +229,6 @@ button:disabled {
 }
 
 .recent-request-img {
-  background-image: url('./../img/imageD-2.jpeg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -407,6 +406,7 @@ SIGNUP PAGE
 }
 
 .signup-container-img {
+  width: 100%;
   background-image: url('./../img/imageC-2.jpeg');
   background-repeat: no-repeat;
   background-position: center;
@@ -507,7 +507,7 @@ pop up
 @media only screen and (min-width: 992px) {
   .signup-container {
     grid-template-columns: auto auto;
-    padding: 50px;
+    padding: 75px;
     grid-column-gap: 5em;
   }
 } 
@@ -516,7 +516,7 @@ pop up
 @media only screen and (min-width: 1200px) {
   .signup-container {
     grid-template-columns: auto auto;
-    padding: 50px;
+    padding: 75px;
     grid-column-gap: 5em;
   }
 }
@@ -546,7 +546,7 @@ pop up
   background-color: #6372c5b0;
  }
  .user-home-bg-img {
-    background-image: url('./../img/imageB-1.jpg');
+    // background-image: url('./../img/imageB-1.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

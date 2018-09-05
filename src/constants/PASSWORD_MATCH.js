@@ -1,0 +1,3 @@
+const PASSWORD_MATCH = 'PASSWORD_MATCH';
+
+export default PASSWORD_MATCH;

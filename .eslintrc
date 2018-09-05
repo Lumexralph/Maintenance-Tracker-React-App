@@ -42,6 +42,7 @@
           "checkChildContextTypes": true
         }
       ],
+      "import/no-extraneous-dependencies": false,
       "max-depth": ["error", 5],
       "jsx-a11y/label-has-for": 0,
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

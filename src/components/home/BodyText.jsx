@@ -10,13 +10,8 @@ const BodyText = () => (
     </h3>
     <h1 className="text-secondary">
         Welcome to
-      <span className="site-name">
-        Fix
-      </span>
-      <span className="text-primary">
-        Zit
-      </span>
-    !
+      <span className="site-name"> Fix</span>
+      <span className="text-primary">Zit</span> !
     </h1>
     <h4>Keep things rolling, keep people happy.</h4>
   </Fragment>
