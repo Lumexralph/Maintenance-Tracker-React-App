@@ -1,5 +1,4 @@
-[![CircleCI](https://circleci.com/gh/andela/fargo-ah-client.svg?style=svg)](https://circleci.com/gh/andela/fargo-ah-client)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/97749a1675afdf06da0e/test_coverage)](https://codeclimate.com/github/andela/fargo-ah-client/test_coverage)
+[![CircleCI](https://circleci.com/gh/Lumexralph/Maintenance-Tracker-React-App.svg?style=svg)](https://circleci.com/gh/Lumexralph/Maintenance-Tracker-React-App)
 
 [CLIENT] Authors Haven - A Social platform for the creative at heart.
 
