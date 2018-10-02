@@ -4,14 +4,15 @@
   "description": "the react-redux form of maintenance-tracker written in html/js/css",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run build && babel server.js -d dist",
+    "prestart": "babel server.js -d dist",
     "start": "node ./dist/server.js",
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "test:mocha": "mocha './src/**/*.test.js' --compilers js:babel-core/register",
     "test": "jest --coverage",
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --mode development",
-    "coverage": "cat ./coverage/lcov.info | coveralls"
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "heroku-postbuild": "npm run build "
   },
   "jest": {
     "moduleNameMapper": {
