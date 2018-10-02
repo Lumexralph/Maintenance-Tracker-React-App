@@ -6,12 +6,10 @@ import PropTypes from 'prop-types';
 import HeaderContainer from '../home/HeaderContainer';
 import SignupFormContainer from './SignupFormContainer';
 import FooterContainer from '../home/FooterContainer';
-import errorOnSignupAction from '../../actions/signupError';
-import passwordMatch from '../../actions/passwordMatch';
-import loadingStatus from '../../actions/loadingStatus';
 import registerUser from '../../actions/registerUser';
-import setMessageAction from '../../actions/setMessage';
+import currentUser from '../../actions/currentUser';
 import ShowLoadingStatus from '../LoadingStatus';
+import updateStorageData from '../../helpers/updateStorageData';
 
 
 class SignupPage extends Component {
@@ -21,6 +19,8 @@ class SignupPage extends Component {
     email: '',
     password1: '',
     password2: '',
+    message: null,
+    isLoading: false,
   }
 
   handleUsernameChange = (event) => {
@@ -55,8 +55,9 @@ class SignupPage extends Component {
       password1, password2, username, email,
     } = this.state;
 
-    const { onPasswordMatch, signupNewUser, setMessage } = this.props;
-    // make a dispatch
+    this.setState({ isLoading: true });
+
+    const { signupNewUser, setCurrentUser } = this.props;
     event.preventDefault();
     const result = (password1 === password2);
 
@@ -65,28 +66,42 @@ class SignupPage extends Component {
         password1, password2, username, email,
       };
 
-      onPasswordMatch(true);
-      signupNewUser(user);
+      signupNewUser(user)
+        .then((response) => {
+          setCurrentUser(response.data);
+          updateStorageData('token', response.data.token);
+          this.setState({
+            message: 'Signup successful',
+            isLoading: false,
+          });
+        })
+        .catch((error) => {
+          const errorMessage = (!error.response) ? 'Please ensure you have internet connection' : error.response.data.message;
+
+          this.setState({
+            isLoading: false,
+            message: errorMessage,
+          });
+
+          return errorMessage;
+        });
     } else {
-      onPasswordMatch(false);
-      setMessage('Passwords supplied do not match');
+      this.setState({
+        isLoading: false,
+        message: 'Password do not match',
+      });
     }
   }
 
   render() {
-    const { navText } = this.state;
-    const {
-      message, isLoading, doesPasswordMatch, errorOnSignup,
-    } = this.props;
+    const { navText, isLoading, message } = this.state;
 
     return (
       <div className="container">
         {message === 'Signup successful' ? <Redirect to="/" /> : null}
         <HeaderContainer navText={navText} />
         <ShowLoadingStatus
-          loadingStatus={isLoading}
-          passwordMatch={doesPasswordMatch}
-          errorOnSignup={errorOnSignup}
+          status={isLoading}
           text={message}
         />
         <SignupFormContainer
@@ -102,44 +117,16 @@ class SignupPage extends Component {
   }
 }
 
-SignupPage.defaultProps = {
-  message: '',
-  doesPasswordMatch: null,
-  errorOnSignup: null,
-};
 
 SignupPage.propTypes = {
-  message: PropTypes.string,
-  isLoading: PropTypes.bool.isRequired,
-  doesPasswordMatch: PropTypes.any,
-  errorOnSignup: PropTypes.any,
-  onPasswordMatch: PropTypes.func.isRequired,
   signupNewUser: PropTypes.func.isRequired,
-  setMessage: PropTypes.func.isRequired,
+  setCurrentUser: PropTypes.func.isRequired,
 };
 
-// will receive the data of the sate from the store and
-// pass it as props to the component
-const mapStateToProps = state => ({
-  currentUser: state.currentUser,
-  errorOnSignup: state.errorOnSignup,
-  isLoading: state.loadingStatus,
-  doesPasswordMatch: state.passwordMatch,
-  message: state.message,
-});
-
-// pass the objects to be used as props which will be used to dispatch to store
 const mapDispatchToProps = dispatch => ({
-  onSignupError: value => dispatch(errorOnSignupAction(value)),
-  onPasswordMatch: value => dispatch(passwordMatch(value)),
-  onLoading: value => dispatch(loadingStatus(value)),
   signupNewUser: user => dispatch(registerUser(user)),
-  setMessage: message => dispatch(setMessageAction(message)),
+  setCurrentUser: user => dispatch(currentUser(user)),
 });
 
-
-const ConnectedSignupPage = connect(mapStateToProps,
+export default connect(null,
   mapDispatchToProps)(SignupPage);
-
-
-export default ConnectedSignupPage;

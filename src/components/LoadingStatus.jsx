@@ -1,28 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Loader from './Loader';
 
 const ShowLoadingStatus = ({
-  passwordMatch, loadingStatus, errorOnSignup, text,
+  status,
+  text,
 }) => {
-  let status;
-  if (errorOnSignup === null && passwordMatch === null) {
-    status = null;
-  } else if (!passwordMatch || errorOnSignup) {
-    status = false;
-  } else {
-    status = true;
+  if (status) {
+    return (<Loader type="bubbles" color="lightblue" />);
   }
-
-  switch (status) {
-  case false:
+  if (text) {
     return (<p>{text}</p>);
-  case true:
-    return (<Loader type="bubbles" color="lightblue" />
-    );
-  default:
-    return null;
   }
+  return null;
+};
+
+ShowLoadingStatus.propTypes = {
+  status: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default ShowLoadingStatus;
