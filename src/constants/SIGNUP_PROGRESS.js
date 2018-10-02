@@ -1,0 +1,3 @@
+const SIGNUP_PROGRESS = 'SIGNUP_PROGRESS';
+
+export default SIGNUP_PROGRESS;

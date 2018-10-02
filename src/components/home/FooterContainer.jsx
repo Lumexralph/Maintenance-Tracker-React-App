@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import footerLogo from '../img/logo-2.png';
 
 const FooterContainer = () => (
   <footer className="footer background-quarternary">
     <div>
       <Link to="/">
-        <img className="footer-logo" src="./src/components/img/logo-2.png" alt="app logo" />
+        <img className="footer-logo" src={footerLogo} alt="app logo" />
       </Link>
     </div>
     <div>

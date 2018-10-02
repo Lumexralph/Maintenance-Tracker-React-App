@@ -1,5 +1,8 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
 
+const cleanPlugin = new CleanWebpackPlugin(['dist']);
 const htmlPlugin = new HtmlWebPackPlugin({
   template: './src/index.html',
   filename: './index.html',
@@ -9,21 +12,15 @@ module.exports = {
   output: {
     publicPath: '/',
   },
-  devServer: {
-    historyApiFallback: true,
-  },
   module: {
     rules: [
       {
         test: /\.js$|\.jsx$/,
+        include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory=true',
         },
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -52,5 +49,6 @@ module.exports = {
   resolve: {
     extensions: ['.scss', '.js', '.jsx'],
   },
-  plugins: [htmlPlugin],
+  plugins: [htmlPlugin, cleanPlugin],
+  target: 'web',
 };

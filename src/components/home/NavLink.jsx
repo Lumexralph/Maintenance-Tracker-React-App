@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const NavLink = ({ text }) => (
   <li>
-    <Link className="btn nav-btn nav-link" to={`/${text.toLowerCase()}`}>{text}</Link>
+    <Link className="btn nav-btn nav-link" to={`/${((text === 'Home') ? '' : text.toLowerCase())}`}>{text}</Link>
   </li>
 );
 

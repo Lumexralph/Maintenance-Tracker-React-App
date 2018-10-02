@@ -1,7 +1,8 @@
 import React from 'react';
+import headerLogo from '../img/logo-1.png';
 
 const HeaderLogo = () => (
-  <img className="header-logo" src="./src/components/img/logo-1.png" alt="header logo" />
+  <img className="header-logo" src={headerLogo} alt="header logo" />
 );
 
 export default HeaderLogo;
