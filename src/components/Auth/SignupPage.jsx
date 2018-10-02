@@ -1,47 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import HeaderContainer from '../home/HeaderContainer';
 import SignupFormContainer from './SignupFormContainer';
 import FooterContainer from '../home/FooterContainer';
-import errorOnSignup from '../../actions/signupError';
+import errorOnSignupAction from '../../actions/signupError';
 import passwordMatch from '../../actions/passwordMatch';
 import loadingStatus from '../../actions/loadingStatus';
 import registerUser from '../../actions/registerUser';
-import setMessage from '../../actions/setMessage';
+import setMessageAction from '../../actions/setMessage';
 import ShowLoadingStatus from '../LoadingStatus';
 
 
 class SignupPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      navText: ['Home', 'Login'],
-      username: '',
-      email: '',
-      password1: '',
-      password2: '',
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  state = {
+    navText: ['Home', 'Login'],
+    username: '',
+    email: '',
+    password1: '',
+    password2: '',
   }
 
-  handleUsernameChange(event) {
+  handleUsernameChange = (event) => {
     const { target } = event;
     this.setState({ username: target.value });
   }
 
-  handleEmailChange(event) {
+  handleEmailChange = (event) => {
     const { target } = event;
     this.setState({ email: target.value });
   }
 
-  handlePasswordChange(event) {
+  handlePasswordChange = (event) => {
     const { target } = event;
     const { name, value } = target;
 
@@ -58,12 +50,12 @@ class SignupPage extends Component {
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     const {
       password1, password2, username, email,
     } = this.state;
 
-    const { onPasswordMatch, signupNewUser, setMessage} = this.props;
+    const { onPasswordMatch, signupNewUser, setMessage } = this.props;
     // make a dispatch
     event.preventDefault();
     const result = (password1 === password2);
@@ -83,7 +75,9 @@ class SignupPage extends Component {
 
   render() {
     const { navText } = this.state;
-    const { message,isLoading, passwordMatch, errorOnSignup } = this.props;
+    const {
+      message, isLoading, doesPasswordMatch, errorOnSignup,
+    } = this.props;
 
     return (
       <div className="container">
@@ -91,7 +85,7 @@ class SignupPage extends Component {
         <HeaderContainer navText={navText} />
         <ShowLoadingStatus
           loadingStatus={isLoading}
-          passwordMatch={passwordMatch}
+          passwordMatch={doesPasswordMatch}
           errorOnSignup={errorOnSignup}
           text={message}
         />
@@ -108,23 +102,39 @@ class SignupPage extends Component {
   }
 }
 
+SignupPage.defaultProps = {
+  message: '',
+  doesPasswordMatch: null,
+  errorOnSignup: null,
+};
+
+SignupPage.propTypes = {
+  message: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired,
+  doesPasswordMatch: PropTypes.any,
+  errorOnSignup: PropTypes.any,
+  onPasswordMatch: PropTypes.func.isRequired,
+  signupNewUser: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+};
+
 // will receive the data of the sate from the store and
 // pass it as props to the component
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
   errorOnSignup: state.errorOnSignup,
-  loadingStatus: state.loadingStatus,
-  passwordMatch: state.passwordMatch,
+  isLoading: state.loadingStatus,
+  doesPasswordMatch: state.passwordMatch,
   message: state.message,
 });
 
 // pass the objects to be used as props which will be used to dispatch to store
 const mapDispatchToProps = dispatch => ({
-  onSignupError: value => dispatch(errorOnSignup(value)),
+  onSignupError: value => dispatch(errorOnSignupAction(value)),
   onPasswordMatch: value => dispatch(passwordMatch(value)),
   onLoading: value => dispatch(loadingStatus(value)),
   signupNewUser: user => dispatch(registerUser(user)),
-  setMessage: message => dispatch(setMessage(message)),
+  setMessage: message => dispatch(setMessageAction(message)),
 });
 
 

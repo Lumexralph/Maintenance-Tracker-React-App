@@ -92,6 +92,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "cors": "^2.8.4",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
