@@ -1,3 +1,3 @@
-const NEW_USER = 'SIGNUP_USER';
+const NEW_USER = 'CURRENT_USER';
 
 export default NEW_USER;
