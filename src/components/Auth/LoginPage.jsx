@@ -61,7 +61,7 @@ class LoginPage extends Component {
     const { navText, message, isLoading } = this.state;
     return (
       <div className="container">
-        {message === 'login successful' ? <Redirect to="/" /> : null}
+        {message === 'login successful' ? <Redirect to="/profile" /> : null}
         <HeaderContainer navText={navText} />
         <ShowLoadingStatus
           status={isLoading}

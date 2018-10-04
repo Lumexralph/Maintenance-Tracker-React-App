@@ -1,3 +1,3 @@
-export const MESSAGE = 'MESSAGE';
-export const NEW_USER = 'SIGNUP_USER';
-export const PASSWORD_MATCH = 'PASSWORD_MATCH';
+export const NEW_USER = 'CURRENT_USER';
+export const USER_REQUESTS = 'USER_REQUESTS';
+export const CREATED_REQUEST = 'CREATED_REQUEST';

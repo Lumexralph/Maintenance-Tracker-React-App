@@ -1,10 +1,10 @@
-const currentUser = (state = {}, action) => {
+const createdRequest = (state = {}, action) => {
   switch (action.type) {
-  case 'CURRENT_USER':
+  case 'CREATED_REQUEST':
     return { ...state, ...action.payload };
   default:
     return state;
   }
 };
 
-export default currentUser;
+export default createdRequest;

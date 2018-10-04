@@ -1,4 +1,4 @@
-import NEW_USER from '../constants/NEW_USER';
+import { NEW_USER } from '../constants';
 
 const signupUser = user => ({
   type: NEW_USER,
