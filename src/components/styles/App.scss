@@ -1,6 +1,8 @@
-@import 'normalize.css';
-@import '_color.scss';
+@import 'normalize';
+@import '_color';
 @import '~font-awesome/css/font-awesome.css';
+@import 'profile';
+
 
 /* Page Layout */
 
@@ -72,8 +74,8 @@ button:disabled {
   border: 3px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  padding: 12px 30px;
-  font-size: 1.313em;
+  padding: 12px 20px;
+  font-size: 1em;
   font-weight: bold;
   border-radius: 4px;
   transition: all 0.3s ease 0s;
@@ -459,11 +461,6 @@ pop up
   width: 100%;
   padding: 5px;
   border-radius: 4px;
-  display:none;
-}
-
-.show-form-popup {
-  display: block;
 }
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
@@ -781,9 +778,7 @@ tr:hover {
 /* Modal Module for Admin request */
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: relative;
   padding-top: 30px; /* Location of the box */
   left: 0;
   top: 0;
@@ -796,15 +791,14 @@ tr:hover {
 
 /* Modal Content */
 .modal-content {
+  border-radius: 5px;
   position: relative;
   background-color: #fefefe;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s
 }
 
 
@@ -838,6 +832,25 @@ padding: 30px 16px;
   padding: 2px 16px;
   background: rgb(38, 49, 76);
   color: white;
+}
+
+@media only screen  and (min-width: 768px) {
+  .modal-content {
+    width: 80%;
+  }
+
+}
+
+@media only screen  and (min-width: 1024px) {
+  .modal-content {
+    width: 50%;
+  }
+
+  .btn {
+    padding: 12px 30px;
+    font-size: 1.313em;
+  }
+
 }
 
 

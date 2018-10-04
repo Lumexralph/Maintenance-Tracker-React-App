@@ -98,7 +98,7 @@ class SignupPage extends Component {
 
     return (
       <div className="container">
-        {message === 'Signup successful' ? <Redirect to="/" /> : null}
+        {message === 'Signup successful' ? <Redirect to="/profile" /> : null}
         <HeaderContainer navText={navText} />
         <ShowLoadingStatus
           status={isLoading}
