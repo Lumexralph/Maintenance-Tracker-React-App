@@ -9,6 +9,7 @@ import LoginPage from './Auth/LoginPage';
 import ProfileWithUserRequests from './UserProfile/ProfileWithUserRequests';
 import ProfileWithCreateRequest from './UserProfile/ProfileWithCreateRequest';
 import SingleRequestPage from './UserProfile/SingleRequest';
+import AdminDashBoard from './Admin/AdminDashBoard';
 
 const App = () => (
   <Provider store={store}>
@@ -21,6 +22,7 @@ const App = () => (
         <Route path="/request/create" component={ProfileWithCreateRequest} />
         <Route path="/request/edit" component={ProfileWithCreateRequest} />
         <Route path="/requests/:id" component={SingleRequestPage} />
+        <Route path="/admin" component={AdminDashBoard} />
       </Switch>
     </Router>
   </Provider>

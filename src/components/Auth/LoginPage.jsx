@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import HeaderContainer from '../home/HeaderContainer';
@@ -32,7 +31,7 @@ class LoginPage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { login, setCurrentUser } = this.props;
+    const { login, setCurrentUser, history } = this.props;
     const { username, password } = this.state;
 
     this.setState({ isLoading: true });
@@ -41,9 +40,13 @@ class LoginPage extends Component {
         setCurrentUser(response.data);
         updateStorageData('token', response.data.token);
         this.setState({
-          message: 'login successful',
           isLoading: false,
         });
+        if (response.data.adminRole) {
+          history.push('/admin');
+        } else {
+          history.push('/profile');
+        }
       })
       .catch((error) => {
         const errorMessage = (!error.response) ? 'Please ensure you have internet connection' : error.response.data.message;
@@ -61,7 +64,6 @@ class LoginPage extends Component {
     const { navText, message, isLoading } = this.state;
     return (
       <div className="container">
-        {message === 'login successful' ? <Redirect to="/profile" /> : null}
         <HeaderContainer navText={navText} />
         <ShowLoadingStatus
           status={isLoading}
@@ -81,6 +83,7 @@ class LoginPage extends Component {
 LoginPage.propTypes = {
   login: PropTypes.func.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 
