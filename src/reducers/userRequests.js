@@ -1,7 +1,7 @@
 const userRequests = (state = [], action) => {
   switch (action.type) {
   case 'USER_REQUESTS':
-    return [...state,
+    return [
       ...action.payload];
   default:
     return state;

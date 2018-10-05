@@ -8,7 +8,7 @@ import SignupPage from './Auth/SignupPage';
 import LoginPage from './Auth/LoginPage';
 import ProfileWithUserRequests from './UserProfile/ProfileWithUserRequests';
 import ProfileWithCreateRequest from './UserProfile/ProfileWithCreateRequest';
-import ProfileWithEditRequest from './UserProfile/ProfileWithEditRequest';
+import SingleRequestPage from './UserProfile/SingleRequest';
 
 const App = () => (
   <Provider store={store}>
@@ -19,8 +19,8 @@ const App = () => (
         <Route path="/login" component={LoginPage} />
         <Route path="/profile" component={ProfileWithUserRequests} />
         <Route path="/request/create" component={ProfileWithCreateRequest} />
-        <Route path="/request/edit" component={ProfileWithEditRequest} />
-        <Route path="/requests/:id" component={ProfileWithEditRequest} />
+        <Route path="/request/edit" component={ProfileWithCreateRequest} />
+        <Route path="/requests/:id" component={SingleRequestPage} />
       </Switch>
     </Router>
   </Provider>
