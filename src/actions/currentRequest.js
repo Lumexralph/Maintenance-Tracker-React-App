@@ -1,7 +1,7 @@
-import { CREATED_REQUEST } from '../constants';
+import { CURRENT_REQUEST } from '../constants';
 
 const createdRequest = requests => ({
-  type: CREATED_REQUEST,
+  type: CURRENT_REQUEST,
   payload: requests,
 });
 
