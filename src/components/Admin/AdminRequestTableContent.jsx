@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AdminRequestTableContent = ({ requests }) => {
+const AdminRequestTableContent = ({
+  requests, onAccept, onReject, onResolve,
+}) => {
   if (requests.length) {
     const RowsOfRequests = requests.map(request => (
       <tr key={Number(request.request_id)}>
@@ -11,11 +13,29 @@ const AdminRequestTableContent = ({ requests }) => {
           <p className="request-title">{request.request_title}</p>
         </td>
         <td>
-          <button type="button" className="admin-table-btn accept-btn" disabled>accept</button>
-          <button type="button" className="admin-table-btn reject-btn" disabled>reject</button>
+          <button
+            onClick={e => onAccept(e, request)}
+            type="button"
+            className="admin-table-btn accept-btn"
+            disabled={request.status === 'approved' || request.status === 'resolved'}
+          >accept
+          </button>
+          <button
+            onClick={e => onReject(e, request)}
+            type="button"
+            className="admin-table-btn reject-btn"
+            disabled={request.status === 'rejected' || request.status === 'resolved'}
+          >reject
+          </button>
         </td>
         <td>
-          <button type="button" className="resolve-btn" disabled>resolve</button>
+          <button
+            onClick={e => onResolve(e, request)}
+            type="button"
+            className="resolve-btn"
+            disabled={request.status === 'resolved'}
+          >resolve
+          </button>
         </td>
       </tr>
     ));
@@ -27,6 +47,9 @@ const AdminRequestTableContent = ({ requests }) => {
 
 AdminRequestTableContent.propTypes = {
   requests: PropTypes.array.isRequired,
+  onAccept: PropTypes.func.isRequired,
+  onReject: PropTypes.func.isRequired,
+  onResolve: PropTypes.func.isRequired,
 };
 
 export default AdminRequestTableContent;

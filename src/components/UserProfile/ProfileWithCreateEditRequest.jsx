@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import requestHOC from '../HOC/requestHOC';
+import requestHOC from '../HOC/userPage';
 
-const CreateRequestForm = ({
+const RequestForm = ({
   onChange, onSubmit, message, pathname, request,
 }) => (
   <div id="request-modal" className="modal">
@@ -69,7 +69,7 @@ const CreateRequestForm = ({
   </div>
 );
 
-CreateRequestForm.propTypes = {
+RequestForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
@@ -77,6 +77,6 @@ CreateRequestForm.propTypes = {
   request: PropTypes.any.isRequired,
 };
 
-const ProfileWithCreateRequest = requestHOC(CreateRequestForm);
+const ProfileWithRequestForm = requestHOC(RequestForm);
 
-export default ProfileWithCreateRequest;
+export default ProfileWithRequestForm;

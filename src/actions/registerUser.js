@@ -1,4 +1,4 @@
-import axiosInstance from '../helpers/apicall';
+import axiosInstance from '../helpers/apiCall';
 
 const registerNewUser = user => () => {
   const JSONData = JSON.stringify(user);

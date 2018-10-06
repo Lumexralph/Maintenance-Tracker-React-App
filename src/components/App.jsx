@@ -7,7 +7,7 @@ import HomePage from './home/HomePage';
 import SignupPage from './Auth/SignupPage';
 import LoginPage from './Auth/LoginPage';
 import ProfileWithUserRequests from './UserProfile/ProfileWithUserRequests';
-import ProfileWithCreateRequest from './UserProfile/ProfileWithCreateRequest';
+import ProfileWithRequestForm from './UserProfile/ProfileWithCreateEditRequest';
 import SingleRequestPage from './UserProfile/SingleRequest';
 import AdminDashBoard from './Admin/AdminDashBoard';
 
@@ -19,8 +19,8 @@ const App = () => (
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/profile" component={ProfileWithUserRequests} />
-        <Route path="/request/create" component={ProfileWithCreateRequest} />
-        <Route path="/request/edit" component={ProfileWithCreateRequest} />
+        <Route path="/request/create" component={ProfileWithRequestForm} />
+        <Route path="/request/edit" component={ProfileWithRequestForm} />
         <Route path="/requests/:id" component={SingleRequestPage} />
         <Route path="/admin" component={AdminDashBoard} />
       </Switch>

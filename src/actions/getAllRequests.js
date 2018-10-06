@@ -1,11 +1,11 @@
-import axiosInstance, { setAuthorizationInHeader } from '../helpers/apicall';
+import axiosInstance, { setAuthorizationInHeader } from '../helpers/apiCall';
 import getDataFromStorage from '../helpers/getDataFromStorage';
 
-const loadAdminRequests = () => () => {
+const getAllRequests = queryParams => () => {
+  const url = queryParams ? `/requests?filter=${queryParams}` : '/requests';
   // retrieve token and set in header
   setAuthorizationInHeader(getDataFromStorage('token'));
-
-  return axiosInstance.get('/requests');
+  return axiosInstance.get(url);
 };
 
-export default loadAdminRequests;
+export default getAllRequests;

@@ -1,4 +1,4 @@
-import axiosInstance, { setAuthorizationInHeader } from '../helpers/apicall';
+import axiosInstance, { setAuthorizationInHeader } from '../helpers/apiCall';
 import getDataFromStorage from '../helpers/getDataFromStorage';
 
 const createUserRequest = request => () => {
@@ -7,7 +7,7 @@ const createUserRequest = request => () => {
 
   const requestDetails = JSON.stringify(request);
 
-  return axiosInstance.post('users/requests', requestDetails);
+  return axiosInstance.post('/users/requests', requestDetails);
 };
 
 export default createUserRequest;

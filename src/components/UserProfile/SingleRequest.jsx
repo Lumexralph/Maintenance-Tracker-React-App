@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import requestHOC from '../HOC/requestHOC';
+import requestHOC from '../HOC/userPage';
 
 const SingleRequest = ({ request }) => (
   <div className="request-container">
