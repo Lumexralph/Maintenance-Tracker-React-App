@@ -1,4 +1,4 @@
-import axiosInstance, { setAuthorizationInHeader } from '../helpers/apicall';
+import axiosInstance, { setAuthorizationInHeader } from '../helpers/apiCall';
 import getDataFromStorage from '../helpers/getDataFromStorage';
 
 const loadUserRequests = () => () => {

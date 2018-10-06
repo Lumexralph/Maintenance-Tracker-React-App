@@ -1,11 +1,11 @@
 import axiosInstance, { setAuthorizationInHeader } from '../helpers/apiCall';
 import getDataFromStorage from '../helpers/getDataFromStorage';
 
-const loadUserRequests = id => () => {
+const adminActionOnRequest = (id, action) => () => {
   // retrieve token and set in header
   setAuthorizationInHeader(getDataFromStorage('token'));
 
-  return axiosInstance.get(`/users/requests/${id}`);
+  return axiosInstance.put(`/requests/${id}/${action}`);
 };
 
-export default loadUserRequests;
+export default adminActionOnRequest;

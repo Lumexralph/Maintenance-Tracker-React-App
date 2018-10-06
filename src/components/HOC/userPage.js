@@ -10,7 +10,7 @@ import getSingleRequest from '../../actions/getSingleRequest';
 import currentRequest from '../../actions/currentRequest';
 import editUserRequest from '../../actions/editUserRequest';
 
-const requestHOC = (WrappedComponent) => {
+const userPage = (WrappedComponent) => {
   class RequestComponent extends Component {
     state = {
       navLinks: ['Home', 'My Requests', 'Make A Request', 'Logout'],
@@ -113,7 +113,7 @@ const requestHOC = (WrappedComponent) => {
       const { navLinks, message = null } = this.state;
       const { requests, presentRequest, history: { location: { pathname } } } = this.props;
 
-      // set form sumit based on create or update request
+      // set form submit based on create or update request
       if (pathname === '/request/create') {
         handleSubmit = this.handleFormSubmit;
         requestData = null;
@@ -169,4 +169,4 @@ const requestHOC = (WrappedComponent) => {
   return connect(mapStateToProps, mapDispatchToProps)(RequestComponent);
 };
 
-export default requestHOC;
+export default userPage;

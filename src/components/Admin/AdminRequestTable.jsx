@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import AdminRequestTableContent from './AdminRequestTableContent';
 
-const AdminRequestTable = ({ requests }) => (
+const AdminRequestTable = ({
+  requests, onAccept, onReject, onResolve,
+}) => (
   <section>
     <div className="table-container">
       <table>
@@ -19,6 +21,9 @@ const AdminRequestTable = ({ requests }) => (
         <tbody>
           {<AdminRequestTableContent
             requests={requests}
+            onAccept={onAccept}
+            onReject={onReject}
+            onResolve={onResolve}
           />}
         </tbody>
       </table>
@@ -27,6 +32,9 @@ const AdminRequestTable = ({ requests }) => (
 
 AdminRequestTable.propTypes = {
   requests: PropTypes.array.isRequired,
+  onAccept: PropTypes.func.isRequired,
+  onReject: PropTypes.func.isRequired,
+  onResolve: PropTypes.func.isRequired,
 };
 
 export default AdminRequestTable;
