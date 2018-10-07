@@ -16,9 +16,13 @@ const ShowLoadingStatus = ({
   return null;
 };
 
+ShowLoadingStatus.defaultProps = {
+  text: null,
+};
+
 ShowLoadingStatus.propTypes = {
   status: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.any,
 };
 
 export default ShowLoadingStatus;
