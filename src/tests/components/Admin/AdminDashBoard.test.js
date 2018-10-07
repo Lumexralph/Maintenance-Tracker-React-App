@@ -5,8 +5,19 @@ import { AdminDashBoard, mapDispatchToProps, mapStateToProps } from '../../../co
 import data from '../../__mocks__/requestsData';
 
 describe('Test for AdminDashBoard', () => {
-  const loadRequests = Promise.resolve(data);
+  const response = { data };
+  const response2 = {
+    data: {
+      message: 'not found',
+    },
+  };
+
+  const loadRequests = Promise.resolve(response);
+  const loadRequestsError = Promise.reject(new Error('Not found'));
+  const loadRequests2 = Promise.resolve(response2);
   const adminAction = Promise.resolve({});
+  const adminActionError = Promise.reject(new Error('Not found'));
+
   let component = renderer.create(
     <Router>
       <AdminDashBoard
@@ -46,14 +57,54 @@ describe('Test for AdminDashBoard', () => {
     done();
   });
 
+  component = renderer.create(
+    <Router>
+      <AdminDashBoard
+        requests={data}
+        loadAdminRequests={() => loadRequests2}
+        storeUserRequests={requests => requests}
+        adminAction={() => adminAction}
+      />
+    </Router>,
+  );
+
+  it('Should render properly on change and click event with request object', (done) => {
+    // call the onChange event
+    expect(tree).toMatchSnapshot();
+    componentInstance.findByType('select').props.onChange({ target: { value: '' } });
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // call click event on accept button
+    componentInstance.findAllByType('button')[0].props.onClick({ target: { value: '' } }, {
+      status: 'approved',
+    });
+
+    componentInstance.findAllByType('button')[0].props.onClick({ target: { value: '' } }, {
+      status: 'resolved',
+    });
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // call click event on reject button
+    componentInstance.findAllByType('button')[1].props.onClick({ target: { value: '' } }, {});
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // call click event on resolve button
+    componentInstance.findAllByType('button')[2].props.onClick({ target: { value: '' } }, {});
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+    done();
+  });
   it('Should render a <p> with text when no data', (done) => {
     component = renderer.create(
       <Router>
         <AdminDashBoard
           requests={[]}
-          loadAdminRequests={() => loadRequests}
+          loadAdminRequests={() => loadRequestsError}
           storeUserRequests={requests => requests}
-          adminAction={() => adminAction}
+          adminAction={() => adminActionError}
         />
       </Router>,
     );
