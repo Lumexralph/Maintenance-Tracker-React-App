@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import requestHOC from '../HOC/userPage';
+import requestHOC from '../HOC/withUserPage';
 
 import Request from './Request';
 
-const UserRequests = ({ requests }) => (
+export const UserRequests = ({ requests }) => (
   <div>
     <Request data={requests} />
   </div>

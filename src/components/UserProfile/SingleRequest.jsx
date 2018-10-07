@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import requestHOC from '../HOC/userPage';
+import requestHOC from '../HOC/withUserPage';
 
-const SingleRequest = ({ request }) => (
+export const SingleRequest = ({ request }) => (
   <div className="request-container">
     <h3>Title: {request.request_title}</h3>
     <h5>Request Details: {request.request_content}</h5>

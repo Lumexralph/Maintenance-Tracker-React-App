@@ -10,7 +10,7 @@ import userRequests from '../../actions/userRequests';
 import adminActionOnRequest from '../../actions/adminActionOnRequest';
 
 
-class AdminDashBoard extends Component {
+export class AdminDashBoard extends Component {
   state = {
     navLinks: ['Home', 'Logout'],
   }
@@ -98,17 +98,17 @@ class AdminDashBoard extends Component {
 }
 
 AdminDashBoard.propTypes = {
-  requests: PropTypes.object.isRequired,
+  requests: PropTypes.array.isRequired,
   loadAdminRequests: PropTypes.func.isRequired,
   storeUserRequests: PropTypes.func.isRequired,
   adminAction: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   requests: state.userRequests,
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   loadAdminRequests: params => dispatch(loadRequests(params)),
   storeUserRequests: requests => dispatch(userRequests(requests)),
   adminAction: (id, action) => dispatch(adminActionOnRequest(id, action)),

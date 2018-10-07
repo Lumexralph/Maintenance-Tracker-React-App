@@ -10,7 +10,7 @@ import currentUser from '../../actions/currentUser';
 import ShowLoadingStatus from '../LoadingStatus';
 import updateStorageData from '../../helpers/updateStorageData';
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   state = {
     navText: ['Home', 'Signup'],
     username: '',
@@ -87,7 +87,7 @@ LoginPage.propTypes = {
 };
 
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   login: user => dispatch(loginUser(user)),
   setCurrentUser: user => dispatch(currentUser(user)),
 });
