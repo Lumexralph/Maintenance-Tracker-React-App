@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import requestHOC from '../HOC/userPage';
+import requestHOC from '../HOC/withUserPage';
 
 export const RequestForm = ({
   onChange, onSubmit, message, pathname, request,
