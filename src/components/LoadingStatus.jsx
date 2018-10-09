@@ -8,10 +8,12 @@ const ShowLoadingStatus = ({
   text,
 }) => {
   if (status) {
-    return (<Loader type="bubbles" color="lightblue" />);
+    return (<div className="loader"><Loader type="bubbles" color="lightblue" /></div>);
   }
   if (text) {
-    return (<p>{text}</p>);
+    return (
+      <div className="loader-text"><p>{text}</p></div>
+    );
   }
   return null;
 };

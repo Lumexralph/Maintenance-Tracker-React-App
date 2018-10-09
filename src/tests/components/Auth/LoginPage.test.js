@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { LoginPage, mapDispatchToProps } from '../../../components/Auth/LoginPage';
 
-describe('Test for LoginPage with non-admin', () => {
+describe('Test for LoginPage with admin', () => {
   const response = {
     data: {
       adminRole: true,

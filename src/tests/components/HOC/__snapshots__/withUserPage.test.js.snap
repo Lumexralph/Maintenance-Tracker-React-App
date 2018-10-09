@@ -42,13 +42,18 @@ exports[`Test for higher order component userpage Should call change event on us
           </a>
         </li>
         <li>
-          <a
-            className="btn nav-btn nav-link"
-            href="/undefined"
+          <button
+            className="btn nav-link nav-btn"
             onClick={[Function]}
+            style={
+              Object {
+                "background": "inherit",
+              }
+            }
+            type="button"
           >
             Logout
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
@@ -189,13 +194,18 @@ exports[`Test for higher order component userpage Should have an onSubmit meetho
           </a>
         </li>
         <li>
-          <a
-            className="btn nav-btn nav-link"
-            href="/undefined"
+          <button
+            className="btn nav-link nav-btn"
             onClick={[Function]}
+            style={
+              Object {
+                "background": "inherit",
+              }
+            }
+            type="button"
           >
             Logout
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
@@ -336,13 +346,18 @@ exports[`Test for higher order component userpage Should have an onSubmit meetho
           </a>
         </li>
         <li>
-          <a
-            className="btn nav-btn nav-link"
-            href="/undefined"
+          <button
+            className="btn nav-link nav-btn"
             onClick={[Function]}
+            style={
+              Object {
+                "background": "inherit",
+              }
+            }
+            type="button"
           >
             Logout
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
@@ -480,13 +495,18 @@ exports[`Test for higher order component userpage Should return another componen
           </a>
         </li>
         <li>
-          <a
-            className="btn nav-btn nav-link"
-            href="/undefined"
+          <button
+            className="btn nav-link nav-btn"
             onClick={[Function]}
+            style={
+              Object {
+                "background": "inherit",
+              }
+            }
+            type="button"
           >
             Logout
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
@@ -627,13 +647,18 @@ exports[`Test for higher order component userpage Should return another componen
           </a>
         </li>
         <li>
-          <a
-            className="btn nav-btn nav-link"
-            href="/undefined"
+          <button
+            className="btn nav-link nav-btn"
             onClick={[Function]}
+            style={
+              Object {
+                "background": "inherit",
+              }
+            }
+            type="button"
           >
             Logout
-          </a>
+          </button>
         </li>
       </ul>
     </nav>

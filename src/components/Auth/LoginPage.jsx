@@ -39,6 +39,7 @@ export class LoginPage extends Component {
       .then((response) => {
         setCurrentUser(response.data);
         updateStorageData('token', response.data.token);
+        updateStorageData('admin', response.data.adminRole);
         this.setState({
           isLoading: false,
         });

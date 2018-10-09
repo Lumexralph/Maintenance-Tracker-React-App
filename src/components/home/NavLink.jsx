@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const NavLink = ({ text }) => {
+import logOut from '../Auth/LogoutButton';
+
+const NavLink = ({ text, history }) => {
   const link = text.replace(/\s/g, '').toLowerCase();
   const routeLink = {
     home: '/',
@@ -11,15 +13,30 @@ const NavLink = ({ text }) => {
     myrequests: '/profile',
     makearequest: '/request/create',
   };
-  return (
+  return (link === 'logout' ? (
     <li>
-      <Link className="btn nav-btn nav-link" to={`${routeLink[link]}`}>{text}</Link>
+      <button
+        type="button"
+        style={{
+          background: 'inherit',
+        }}
+        className="btn nav-link nav-btn"
+        onClick={() => logOut(history)}
+      >{text}
+      </button>
     </li>
+  )
+    : (
+      <li>
+        <Link className="btn nav-btn nav-link" to={`${routeLink[link]}`}>{text}</Link>
+      </li>
+    )
   );
 };
 
 NavLink.propTypes = {
   text: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default NavLink;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test for LoginPage with non-admin Should call submit event on form 1`] = `
+exports[`Test for LoginPage with admin Should call submit event on form 1`] = `
 <div
   className="container"
 >
@@ -36,9 +36,12 @@ exports[`Test for LoginPage with non-admin Should call submit event on form 1`] 
     </nav>
   </header>
   <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\">
+    className="loader"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\">
   <circle transform=\\"translate(8 0)\\" cx=\\"0\\" cy=\\"16\\" r=\\"0\\"> 
     <animate attributeName=\\"r\\" values=\\"0; 4; 0; 0\\" dur=\\"1.2s\\" repeatCount=\\"indefinite\\" begin=\\"0\\"
       keytimes=\\"0;0.2;0.7;1\\" keySplines=\\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\\" calcMode=\\"spline\\" />
@@ -53,25 +56,24 @@ exports[`Test for LoginPage with non-admin Should call submit event on form 1`] 
   </circle>
 </svg>
 ",
+        }
       }
-    }
-    style={
-      Object {
-        "fill": "lightblue",
-        "height": "20%",
-        "width": "20%",
+      style={
+        Object {
+          "fill": "lightblue",
+          "height": "5%",
+          "width": "20%",
+        }
       }
-    }
-  />
+    />
+  </div>
   <main
     className="signup-container-img"
   >
     <section
-      className="signup-container"
+      className="signup-container login"
     >
-      <div
-        className="right-part"
-      >
+      <div>
         <form
           onSubmit={[Function]}
         >
@@ -237,7 +239,7 @@ exports[`Test for LoginPage with non-admin Should call submit event on form 1`] 
 </div>
 `;
 
-exports[`Test for LoginPage with non-admin Should have the onChange event on input field 1`] = `
+exports[`Test for LoginPage with admin Should have the onChange event on input field 1`] = `
 <div
   className="container"
 >
@@ -272,18 +274,20 @@ exports[`Test for LoginPage with non-admin Should have the onChange event on inp
       </ul>
     </nav>
   </header>
-  <p>
-    Please ensure you have internet connection
-  </p>
+  <div
+    className="loader-text"
+  >
+    <p>
+      Please ensure you have internet connection
+    </p>
+  </div>
   <main
     className="signup-container-img"
   >
     <section
-      className="signup-container"
+      className="signup-container login"
     >
-      <div
-        className="right-part"
-      >
+      <div>
         <form
           onSubmit={[Function]}
         >
@@ -449,7 +453,7 @@ exports[`Test for LoginPage with non-admin Should have the onChange event on inp
 </div>
 `;
 
-exports[`Test for LoginPage with non-admin Should have the onChange event on input field 2`] = `
+exports[`Test for LoginPage with admin Should have the onChange event on input field 2`] = `
 <div
   className="container"
 >
@@ -484,18 +488,20 @@ exports[`Test for LoginPage with non-admin Should have the onChange event on inp
       </ul>
     </nav>
   </header>
-  <p>
-    Please ensure you have internet connection
-  </p>
+  <div
+    className="loader-text"
+  >
+    <p>
+      Please ensure you have internet connection
+    </p>
+  </div>
   <main
     className="signup-container-img"
   >
     <section
-      className="signup-container"
+      className="signup-container login"
     >
-      <div
-        className="right-part"
-      >
+      <div>
         <form
           onSubmit={[Function]}
         >
@@ -661,7 +667,7 @@ exports[`Test for LoginPage with non-admin Should have the onChange event on inp
 </div>
 `;
 
-exports[`Test for LoginPage with non-admin Should render component 1`] = `
+exports[`Test for LoginPage with admin Should render component 1`] = `
 <div
   className="container"
 >
@@ -700,11 +706,9 @@ exports[`Test for LoginPage with non-admin Should render component 1`] = `
     className="signup-container-img"
   >
     <section
-      className="signup-container"
+      className="signup-container login"
     >
-      <div
-        className="right-part"
-      >
+      <div>
         <form
           onSubmit={[Function]}
         >

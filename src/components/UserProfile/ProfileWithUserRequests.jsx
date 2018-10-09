@@ -6,7 +6,7 @@ import requestHOC from '../HOC/withUserPage';
 import Request from './Request';
 
 export const UserRequests = ({ requests }) => (
-  <div>
+  <div className="card-container">
     <Request data={requests} />
   </div>
 );

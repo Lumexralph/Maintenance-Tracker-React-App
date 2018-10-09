@@ -24,7 +24,6 @@ const store = mockStore({
 // const renderer = new ShallowRenderer();
 
 describe('Test for higher order component userpage', () => {
-  // const Request = () => (<p>Fixzit test</p>);
   const UserPage = withUserPage(RequestForm);
 
   const history = {

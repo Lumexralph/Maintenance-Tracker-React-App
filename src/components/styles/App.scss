@@ -3,6 +3,8 @@
 @import '~font-awesome/css/font-awesome.css';
 @import 'profile';
 @import 'request-page';
+@import 'Loader';
+@import 'RequestCard';
 
 
 /* Page Layout */
@@ -395,7 +397,7 @@ SIGNUP PAGE
   grid-template-rows: auto auto;
   text-align: center;
   justify-content: center;
-  padding: 25px;
+  padding: 20px;
   grid-row-gap: 2em;
   background-color: rgba(46, 65, 114, 0.6);
   color: white;
@@ -461,6 +463,10 @@ pop up
   border-radius: 4px;
 }
 
+.login {
+  padding: 40px;
+}
+
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
   visibility: visible;
@@ -496,7 +502,10 @@ pop up
     padding: 50px;
     grid-column-gap: 5em;
   }
-} 
+  .login {
+    padding: 102px;
+  }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
@@ -511,8 +520,11 @@ pop up
 @media only screen and (min-width: 1200px) {
   .signup-container {
     grid-template-columns: auto auto;
-    padding: 75px;
+    padding: 70px;
     grid-column-gap: 5em;
+  }
+  .login {
+    padding: 132px;
   }
 }
 
@@ -520,6 +532,7 @@ pop up
 /* #############
   LOGIN PAGE
 ################*/
+
 
 .psw > p {
   float: left;
@@ -834,14 +847,14 @@ padding: 30px 16px;
 
 @media only screen  and (min-width: 768px) {
   .modal-content {
-    width: 80%;
+    width: 60%;
   }
 
 }
 
 @media only screen  and (min-width: 1024px) {
   .modal-content {
-    width: 50%;
+    width: 40%;
   }
 
   .btn {
@@ -850,8 +863,3 @@ padding: 30px 16px;
   }
 
 }
-
-
-
-
-

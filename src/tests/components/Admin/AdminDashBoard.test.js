@@ -1,118 +1,95 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {shallow} from 'enzyme';
 import { AdminDashBoard, mapDispatchToProps, mapStateToProps } from '../../../components/Admin/AdminDashBoard';
-import data from '../../__mocks__/requestsData';
 
 describe('Test for AdminDashBoard', () => {
-  const response = { data };
-  const response2 = {
-    data: {
-      message: 'not found',
-    },
-  };
+  it('Should call "componentDidMount()" ', () => {
+    const spy = jest.spyOn(AdminDashBoard.prototype, 'componentDidMount');
 
-  const loadRequests = Promise.resolve(response);
-  const loadRequestsError = Promise.reject(new Error('Not found'));
-  const loadRequests2 = Promise.resolve(response2);
-  const adminAction = Promise.resolve({});
-  const adminActionError = Promise.reject(new Error('Not found'));
+    const response1 = {
+      data: {
+        message: 'prof',
+      },
+    };
 
-  let component = renderer.create(
-    <Router>
-      <AdminDashBoard
-        requests={data}
-        loadAdminRequests={() => loadRequests}
-        storeUserRequests={requests => requests}
-        adminAction={() => adminAction}
-      />
-    </Router>,
-  );
+    const response2 = {
+      data: {
+      },
+    };
 
-  let componentInstance = component.root;
+    const event = { target: { value: '' } };
 
-  let tree = component.toJSON();
+    const requestWithStatus = {
+      id: 1,
+      status: 'rejected',
+    };
 
-  it('Should render properly on change and cick event', (done) => {
-    // call the onChange event
-    expect(tree).toMatchSnapshot();
-    componentInstance.findByType('select').props.onChange({ target: { value: '' } });
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const funcWithPromiseResolved1 = () => Promise.resolve(response1);
+    const funcWithPromiseResolved2 = () => Promise.resolve(response2);
+    const mockProps = {
+      loadAdminRequests: funcWithPromiseResolved1,
+      storeUserRequests: jest.fn(),
+      adminAction: funcWithPromiseResolved1,
+    };
 
-    // call click event on accept button
-    componentInstance.findAllByType('button')[0].props.onClick({ target: { value: '' } }, {});
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    shallow(<AdminDashBoard {...mockProps} />);
 
-    // call click event on reject button
-    componentInstance.findAllByType('button')[1].props.onClick({ target: { value: '' } }, {});
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    mockProps.loadAdminRequests = funcWithPromiseResolved2;
 
-    // call click event on resolve button
-    componentInstance.findAllByType('button')[2].props.onClick({ target: { value: '' } }, {});
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-    done();
-  });
+    const wrapper = shallow(<AdminDashBoard {...mockProps} />);
+    expect(spy).toHaveBeenCalled();
 
-  component = renderer.create(
-    <Router>
-      <AdminDashBoard
-        requests={data}
-        loadAdminRequests={() => loadRequests2}
-        storeUserRequests={requests => requests}
-        adminAction={() => adminAction}
-      />
-    </Router>,
-  );
+    // call the handleRequestFilter method
+    let result = wrapper.instance().handleRequestFilter(event)
+      .then(response => response);
 
-  it('Should render properly on change and click event with request object', (done) => {
-    // call the onChange event
-    expect(tree).toMatchSnapshot();
-    componentInstance.findByType('select').props.onChange({ target: { value: '' } });
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result.resolve).toBeUndefined();
 
-    // call click event on accept button
-    componentInstance.findAllByType('button')[0].props.onClick({ target: { value: '' } }, {
-      status: 'approved',
-    });
+    // call rejectRequest method with request status rejected
+    result = wrapper.instance().rejectRequest(event, requestWithStatus);
+    expect(result).toBe(null);
 
-    componentInstance.findAllByType('button')[0].props.onClick({ target: { value: '' } }, {
-      status: 'resolved',
-    });
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    // call rejectRequest method with request status resolved
+    requestWithStatus.status = 'resolved';
+    result = wrapper.instance().rejectRequest(event, requestWithStatus);
 
-    // call click event on reject button
-    componentInstance.findAllByType('button')[1].props.onClick({ target: { value: '' } }, {});
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result).toBe(null);
 
-    // call click event on resolve button
-    componentInstance.findAllByType('button')[2].props.onClick({ target: { value: '' } }, {});
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-    done();
-  });
-  it('Should render a <p> with text when no data', (done) => {
-    component = renderer.create(
-      <Router>
-        <AdminDashBoard
-          requests={[]}
-          loadAdminRequests={() => loadRequestsError}
-          storeUserRequests={requests => requests}
-          adminAction={() => adminActionError}
-        />
-      </Router>,
-    );
-    componentInstance = component.root;
+    // call the api call if the status is not approved or resolved
+    requestWithStatus.status = '';
+    result = wrapper.instance().rejectRequest(event, requestWithStatus);
 
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-    done();
+    expect(result.resolve).toBeUndefined();
+
+    // call approveRequest method with request status approved
+    requestWithStatus.status = 'approved';
+    result = wrapper.instance().approveRequest(event, requestWithStatus);
+
+    expect(result).toBe(null);
+
+    // call approveRequest method with request status resolved
+    requestWithStatus.status = 'resolved';
+    result = wrapper.instance().approveRequest(event, requestWithStatus);
+
+    expect(result).toBe(null);
+
+    // call the api call if the status is not approved or resolved
+    requestWithStatus.status = '';
+    result = wrapper.instance().approveRequest(event, requestWithStatus);
+
+    expect(result.resolve).toBeUndefined();
+
+    // call resolveRequest method with request status resolved
+    requestWithStatus.status = 'resolved';
+    result = wrapper.instance().resolveRequest(event, requestWithStatus);
+
+    expect(result).toBe(null);
+
+    // call the api call if the status is not resolved
+    requestWithStatus.status = '';
+    result = wrapper.instance().resolveRequest(event, requestWithStatus);
+
+    expect(result.resolve).toBeUndefined();
   });
 
   it('Should dispatch loadAdminRequests action', (done) => {

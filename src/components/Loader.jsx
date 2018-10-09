@@ -3,7 +3,7 @@ import ReactLoading from 'react-loading';
 import PropTypes from 'prop-types';
 
 const Loader = ({ type, color }) => (
-  <ReactLoading type={type} color={color} height="20%" width="20%" />
+  <ReactLoading type={type} color={color} height="5%" width="20%" />
 );
 
 Loader.propTypes = {
