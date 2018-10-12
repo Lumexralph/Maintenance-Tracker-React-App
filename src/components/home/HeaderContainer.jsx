@@ -5,11 +5,11 @@ import Header from './Header';
 import HeaderLogo from './HeaderLogo';
 import NavLink from './NavLink';
 
-const HeaderContainer = ({ navText }) => {
+const HeaderContainer = ({ navText, history }) => {
   const NavLinks = navText.map((text, index) => {
     const key = index + text;
     return (
-      <NavLink key={key} text={text} />
+      <NavLink key={key} text={text} history={history} />
     );
   });
 
@@ -31,6 +31,7 @@ const HeaderContainer = ({ navText }) => {
 
 HeaderContainer.propTypes = {
   navText: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default HeaderContainer;

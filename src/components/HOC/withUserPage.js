@@ -111,7 +111,7 @@ const userPage = (WrappedComponent) => {
       let requestData;
       let handleSubmit;
       const { navLinks, message = null } = this.state;
-      const { requests, presentRequest, history: { location: { pathname } } } = this.props;
+      const { requests, presentRequest, history, history: { location: { pathname } } } = this.props;
 
       // set form submit based on create or update request
       if (pathname === '/request/create') {
@@ -124,7 +124,7 @@ const userPage = (WrappedComponent) => {
 
       return (
         <div className="container">
-          <HeaderContainer navText={navLinks} />
+          <HeaderContainer navText={navLinks} history={history} />
           <WrappedComponent
             requests={requests}
             onChange={this.handleUserInput}

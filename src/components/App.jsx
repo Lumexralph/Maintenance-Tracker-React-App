@@ -10,6 +10,8 @@ import ProfileWithUserRequests from './UserProfile/ProfileWithUserRequests';
 import ProfileWithRequestForm from './UserProfile/ProfileWithCreateEditRequest';
 import SingleRequestPage from './UserProfile/SingleRequest';
 import AdminDashBoard from './Admin/AdminDashBoard';
+import ProtectProfileRoute from './UserProfile/ProtectProfileRoute';
+import PrivateAdminRoute from './Auth/PrivateAdminRoute';
 
 const App = () => (
   <Provider store={store}>
@@ -18,11 +20,11 @@ const App = () => (
         <Route exact path="/" component={HomePage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/profile" component={ProfileWithUserRequests} />
-        <Route path="/request/create" component={ProfileWithRequestForm} />
-        <Route path="/request/edit" component={ProfileWithRequestForm} />
-        <Route path="/requests/:id" component={SingleRequestPage} />
-        <Route path="/admin" component={AdminDashBoard} />
+        <ProtectProfileRoute path="/profile" component={ProfileWithUserRequests} />
+        <ProtectProfileRoute path="/request/create" component={ProfileWithRequestForm} />
+        <ProtectProfileRoute path="/request/edit" component={ProfileWithRequestForm} />
+        <ProtectProfileRoute path="/requests/:id" component={SingleRequestPage} />
+        <PrivateAdminRoute path="/admin" component={AdminDashBoard} />
       </Switch>
     </Router>
   </Provider>

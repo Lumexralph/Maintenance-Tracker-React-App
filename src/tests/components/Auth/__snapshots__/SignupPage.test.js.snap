@@ -35,9 +35,13 @@ exports[`Test for LoginPage with non-admin Should call change event on email inp
       </ul>
     </nav>
   </header>
-  <p>
-    Signup successful
-  </p>
+  <div
+    className="loader-text"
+  >
+    <p>
+      Signup successful
+    </p>
+  </div>
   <main
     className="signup-container-img"
   >
@@ -274,9 +278,13 @@ exports[`Test for LoginPage with non-admin Should call change event on psw1 inpu
       </ul>
     </nav>
   </header>
-  <p>
-    Signup successful
-  </p>
+  <div
+    className="loader-text"
+  >
+    <p>
+      Signup successful
+    </p>
+  </div>
   <main
     className="signup-container-img"
   >
@@ -513,9 +521,13 @@ exports[`Test for LoginPage with non-admin Should call change event on psw2 inpu
       </ul>
     </nav>
   </header>
-  <p>
-    Signup successful
-  </p>
+  <div
+    className="loader-text"
+  >
+    <p>
+      Signup successful
+    </p>
+  </div>
   <main
     className="signup-container-img"
   >
@@ -752,9 +764,13 @@ exports[`Test for LoginPage with non-admin Should call change event on username 
       </ul>
     </nav>
   </header>
-  <p>
-    Signup successful
-  </p>
+  <div
+    className="loader-text"
+  >
+    <p>
+      Signup successful
+    </p>
+  </div>
   <main
     className="signup-container-img"
   >
@@ -992,9 +1008,12 @@ exports[`Test for LoginPage with non-admin Should call submit event on form 1`] 
     </nav>
   </header>
   <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\">
+    className="loader"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\">
   <circle transform=\\"translate(8 0)\\" cx=\\"0\\" cy=\\"16\\" r=\\"0\\"> 
     <animate attributeName=\\"r\\" values=\\"0; 4; 0; 0\\" dur=\\"1.2s\\" repeatCount=\\"indefinite\\" begin=\\"0\\"
       keytimes=\\"0;0.2;0.7;1\\" keySplines=\\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\\" calcMode=\\"spline\\" />
@@ -1009,16 +1028,17 @@ exports[`Test for LoginPage with non-admin Should call submit event on form 1`] 
   </circle>
 </svg>
 ",
+        }
       }
-    }
-    style={
-      Object {
-        "fill": "lightblue",
-        "height": "20%",
-        "width": "20%",
+      style={
+        Object {
+          "fill": "lightblue",
+          "height": "5%",
+          "width": "20%",
+        }
       }
-    }
-  />
+    />
+  </div>
   <main
     className="signup-container-img"
   >

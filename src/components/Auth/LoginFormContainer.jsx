@@ -9,7 +9,7 @@ const LoginFormContainer = ({
   onSubmit,
 }) => (
   <main className="signup-container-img">
-    <section className="signup-container">
+    <section className="signup-container login">
       <LoginForm
         onUsernameChange={onUsernameChange}
         onPasswordInput={onPasswordInput}

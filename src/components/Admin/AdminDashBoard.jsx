@@ -26,8 +26,7 @@ export class AdminDashBoard extends Component {
       .then((response) => {
         const requests = response.data.message ? [] : response.data;
         storeUserRequests(requests);
-      })
-      .catch(error => error);
+      });
   }
 
   rejectRequest = (event, request) => {
@@ -69,18 +68,16 @@ export class AdminDashBoard extends Component {
           .then((response) => {
             const requests = response.data.message ? [] : response.data;
             storeUserRequests(requests);
-          })
-          .catch(error => error.response.data);
-      })
-      .catch(error => error.response.data);
+          });
+      });
   }
 
   render() {
     const { navLinks } = this.state;
-    const { requests } = this.props;
+    const { requests, history } = this.props;
     return (
       <div className="container">
-        <HeaderContainer navText={navLinks} />
+        <HeaderContainer navText={navLinks} history={history} />
         <main>
           <AdminPanel
             onFilter={this.handleRequestFilter}
@@ -102,6 +99,7 @@ AdminDashBoard.propTypes = {
   loadAdminRequests: PropTypes.func.isRequired,
   storeUserRequests: PropTypes.func.isRequired,
   adminAction: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export const mapStateToProps = state => ({

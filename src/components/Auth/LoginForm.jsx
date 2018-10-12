@@ -6,7 +6,7 @@ const LoginForm = ({
   onPasswordInput,
   onSubmit,
 }) => (
-  <div className="right-part">
+  <div>
     <form
       onSubmit={event => onSubmit(event)}
     >
