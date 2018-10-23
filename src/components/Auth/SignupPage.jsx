@@ -70,6 +70,7 @@ export class SignupPage extends Component {
         .then((response) => {
           setCurrentUser(response.data);
           updateStorageData('token', response.data.token);
+          updateStorageData('admin', response.data.adminRole);
           this.setState({
             message: 'Signup successful',
             isLoading: false,

@@ -8,7 +8,7 @@ const AdminRequestTableContent = ({
     const RowsOfRequests = requests.map(request => (
       <tr key={Number(request.request_id)}>
         <td className="request-id">{request.request_id}</td>
-        <td>{request.status}</td>
+        <td>{request.status} <i className={`${request.status} fa fa-circle `} /></td>
         <td>
           <p className="request-title">{request.request_title}</p>
         </td>
@@ -16,7 +16,7 @@ const AdminRequestTableContent = ({
           <button
             onClick={e => onAccept(e, request)}
             type="button"
-            className="admin-table-btn accept-btn"
+            className="admin-table-btn accept-btn btn-margin"
             disabled={request.status === 'approved' || request.status === 'resolved'}
           >accept
           </button>
@@ -42,7 +42,7 @@ const AdminRequestTableContent = ({
 
     return RowsOfRequests;
   }
-  return (<p>No Requests Yet...</p>);
+  return (<tr><td>No Requests Yet...</td></tr>);
 };
 
 AdminRequestTableContent.propTypes = {

@@ -3,7 +3,7 @@ import axios from 'axios';
 const baseURL = 'https://maintenance-tracker-lumexralph.herokuapp.com/api/v1';
 const instance = axios.create({
   baseURL,
-  timeout: 10000,
+  timeout: 30000,
   headers: { 'Content-Type': 'application/json' },
 });
 

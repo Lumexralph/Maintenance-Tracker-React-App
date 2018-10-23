@@ -590,6 +590,14 @@ pop up
   margin: auto;
 }
 
+.request-card {
+  cursor: unset;
+  box-shadow: 0 0;
+  &:hover {
+    box-shadow: 0 0;
+  }
+}
+
 
 /* Create an active/current tablink class */
 #defaultOpen {
@@ -762,6 +770,28 @@ th, td {
 tr:hover {
   background-color: #f2f2f2;
 }
+
+/* The colour status of the requests */
+.approved {
+  color: green;
+}
+
+.rejected {
+  color: red;
+}
+
+.pending {
+  color: rgb(240, 240, 69);
+}
+
+.resolved {
+  color: $background-primary;
+}
+
+.btn-margin {
+  margin-right: 1em;
+}
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
