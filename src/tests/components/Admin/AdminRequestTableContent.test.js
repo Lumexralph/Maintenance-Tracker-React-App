@@ -39,6 +39,6 @@ describe('Test for AdminRequestTable', () => {
     };
 
     const wrapper = shallow(<AdminRequestTableContent {...props} />);
-    expect(wrapper.type()).toBe('p');
+    expect(wrapper.type()).toBe('tr');
   });
 });
