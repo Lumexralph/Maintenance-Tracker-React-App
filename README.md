@@ -50,4 +50,4 @@ Your patches are welcome. Here's our suggested workflow:
 
 ## Copyright
 
-Copyright (c) 2018 LumexRalph. Released under the [MIT License](https://github.com/Lumexralph/Maintenance-Tracker/blob/develop/LICENSE).
+Copyright (c) 2018 LumexRalph. Released under the [MIT License](https://github.com/Lumexralph/Maintenance-Tracker-React-App/blob/develop/LICENSE).
