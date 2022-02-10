@@ -79,7 +79,7 @@
     "jest": "^23.5.0",
     "mini-css-extract-plugin": "^0.4.2",
     "mocha": "^5.2.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react-test-renderer": "^16.4.2",
     "redux-devtools-extension": "^2.13.5",
